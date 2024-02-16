@@ -21,6 +21,30 @@ class MainActivity : AppCompatActivity() {
         //scoreText.setText(score);
     }
 
+    fun radioButtonOnClick(view: View)
+    {
+        if(view.id == R.id.rb_one)
+        {
+            var tv = findViewById<TextView>(R.id.ShowScoreText);
+            tv.text = "Radio Button One";
+        }
+        if(view.id == R.id.rb_two)
+        {
+            var tv = findViewById<TextView>(R.id.ShowScoreText);
+            tv.text = "Radio Button Two";
+        }
+        if(view.id == R.id.rb_three)
+        {
+            var tv = findViewById<TextView>(R.id.ShowScoreText);
+            tv.text = "Radio Button Three";
+        }
+        if(view.id == R.id.rb_four)
+        {
+            var tv = findViewById<TextView>(R.id.ShowScoreText);
+            tv.text = "Radio Button Four";
+        }
+    }
+
     fun leftButtonOnClick(view: View)
     {
         pickRandomNumber();
@@ -35,16 +59,14 @@ class MainActivity : AppCompatActivity() {
 
     fun pickRandomNumber()
     {
-        var leftButton = findViewById<Button>(R.id.left_number_button);
-        var rightButton = findViewById<Button>(R.id.right_number_button);
+
 
         var randNum = Random();
 
         var leftNum = randNum.nextInt(10);
         var rightNum = randNum.nextInt(10);
 
-        leftButton.text = "$leftNum";
-        rightButton.text = "$rightNum";
+
     }
 
     fun increaseScoreCounterIfLeftClicked()
