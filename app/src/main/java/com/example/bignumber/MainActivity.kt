@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        pickRandomNumber();
-        //scoreText.setText(score);
+
     }
 
     fun radioButtonOnClick(view: View)
@@ -45,54 +44,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun leftButtonOnClick(view: View)
-    {
-        pickRandomNumber();
-        //increaseScoreCounterIfLeftClicked();
-    }
-
-    fun rightButtonOnClick(view: View)
-    {
-        pickRandomNumber();
-        //increaseScoreCounterIfRightClicked();
-    }
-
-    fun pickRandomNumber()
-    {
-
-
-        var randNum = Random();
-
-        var leftNum = randNum.nextInt(10);
-        var rightNum = randNum.nextInt(10);
-
-
-    }
-
-    fun increaseScoreCounterIfLeftClicked()
-    {
-
-        if(leftNum >= rightNum)
-        {
-            score++;
-            //scoreText.setText(score);
-        }else
-        {
-            score--;
-            //scoreText.setText(score);
-        }
-    }
-
-    fun increaseScoreCounterIfRightClicked()
-    {
-        if(rightNum >= leftNum)
-        {
-            score++;
-            //scoreText.setText(score);
-        }else
-        {
-            score--;
-            //scoreText.setText(score);
-        }
-    }
 }
