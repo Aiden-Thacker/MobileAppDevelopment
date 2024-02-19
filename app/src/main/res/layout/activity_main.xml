@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="412dp"
         android:layout_height="64dp"
-        android:background="?attr/colorPrimary"
+        android:background="#75D144"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/learningGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Whose That Pokemon"
+        android:text="Learning Game"
         android:textColor="#FEFEFE"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
@@ -32,78 +32,27 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/ShowScoreText"
+        android:id="@+id/defineWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:text="Score"
-        android:textSize="20sp"
+        android:layout_marginTop="100dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dynamic_def_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:orientation="vertical"
-        android:outlineProvider="none"
-        app:layout_constraintBottom_toTopOf="@+id/ShowScoreText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-        <RadioButton
-            android:id="@+id/rb_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="radioButtonOnClick"
-            android:text="Pokemon 1" />
-
-        <RadioButton
-            android:id="@+id/rb_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="radioButtonOnClick"
-            android:text="Pokemon 2" />
-
-        <RadioButton
-            android:id="@+id/rb_three"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="radioButtonOnClick"
-            android:text="Pokemon 3" />
-
-        <RadioButton
-            android:id="@+id/rb_four"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="radioButtonOnClick"
-            android:text="Pokemon 4" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ShowScoreText"
-        app:layout_constraintVertical_bias="0.326" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="352dp"
-        android:layout_height="286dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/defineWord" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
