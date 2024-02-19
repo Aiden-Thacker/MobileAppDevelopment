@@ -35,7 +35,7 @@
         android:id="@+id/ShowScoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="400dp"
         android:text="Score"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,28 +43,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TableLayout>
-
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         android:orientation="vertical"
         android:outlineProvider="none"
-        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/ShowScoreText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,11 +89,21 @@
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ShowScoreText" />
+        app:layout_constraintTop_toBottomOf="@+id/ShowScoreText"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="352dp"
+        android:layout_height="286dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
