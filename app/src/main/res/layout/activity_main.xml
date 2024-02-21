@@ -23,7 +23,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Who&quot;s That Pokemon"
+        android:text="Who's That Pokemon"
         android:textColor="#FEFEFE"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
@@ -59,12 +59,18 @@
         android:layout_width="352dp"
         android:layout_height="286dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="135dp"
+        android:contentDescription="whos_that_pokemon"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/ShowScoreText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/who_s_that_pokemon"
+        tools:srcCompat="@drawable/who_s_that_pokemon"
+        tools:visibility="visible" />
 
-    <androidx.gridlayout.widget.GridLayout
+    <GridLayout
         android:id="@+id/Grid_layout"
         android:layout_width="210dp"
         android:layout_height="100dp"
@@ -109,6 +115,6 @@
             android:onClick="radioButtonOnClick"
             android:text="Clefairy" />
 
-    </androidx.gridlayout.widget.GridLayout>
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
