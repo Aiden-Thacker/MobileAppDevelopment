@@ -1,46 +1,56 @@
 package com.example.bignumber
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
+import androidx.gridlayout.widget.GridLayout
+import android.widget.RadioButton
 import android.widget.TextView
-import java.util.Random
+import androidx.appcompat.app.AppCompatActivity
+import java.util.Collections
+
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
-    private var leftNum :Int = 0;
-    private var rightNum :Int = 0;
-    private var score :Int = 0;
-    //var scoreText = findViewById<TextView>(R.id.ShowScoreText);
-
+    private lateinit var gridLayout: GridLayout
+    private lateinit var radioButtons: MutableList<RadioButton>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        gridLayout = findViewById(R.id.Grid_layout)
+        radioButtons = mutableListOf<RadioButton>().apply {
+            add(findViewById(R.id.rb_pokemon_one))
+            add(findViewById(R.id.rb_pokemon_two))
+            add(findViewById(R.id.rb_pokemon_three))
+            add(findViewById(R.id.rb_pokemon_four))
+        }
+
+        pickRandomOrder();
+
     }
 
-    fun radioButtonOnClick(view: View)
+    fun radioButtonOnClick(view: android.view.View)
     {
-        if(view.id == R.id.rb_one)
-        {
-            var tv = findViewById<TextView>(R.id.ShowScoreText);
-            tv.text = "Radio Button One";
-        }
-        if(view.id == R.id.rb_two)
-        {
-            var tv = findViewById<TextView>(R.id.ShowScoreText);
-            tv.text = "Radio Button Two";
-        }
-        if(view.id == R.id.rb_three)
-        {
-            var tv = findViewById<TextView>(R.id.ShowScoreText);
-            tv.text = "Radio Button Three";
-        }
-        if(view.id == R.id.rb_four)
-        {
-            var tv = findViewById<TextView>(R.id.ShowScoreText);
-            tv.text = "Radio Button Four";
+        val clickedButton = view as RadioButton
+        radioButtons.filter { it != clickedButton }.forEach { it.isChecked = false }
+    }
+
+    private fun pickRandomOrder()
+    {
+        try {
+            radioButtons.shuffle()
+
+            gridLayout.removeAllViews()
+
+            radioButtons.forEach { radioButton ->
+                gridLayout.addView(radioButton)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
