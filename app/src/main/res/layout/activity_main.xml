@@ -47,7 +47,9 @@
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onButtonClick"
         android:text="Submit"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +57,7 @@
         app:layout_constraintVertical_bias="0.326" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/PokemonImage"
         android:layout_width="352dp"
         android:layout_height="286dp"
         android:layout_marginTop="24dp"
@@ -66,8 +68,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/who_s_that_pokemon"
-        tools:srcCompat="@drawable/who_s_that_pokemon"
+        app:srcCompat="@drawable/whosthatpokemonclefairysilhouette"
+        tools:srcCompat="@drawable/whosthatpokemonclefairysilhouette"
         tools:visibility="visible" />
 
     <GridLayout
@@ -83,7 +85,7 @@
         app:layout_constraintBottom_toTopOf="@+id/ShowScoreText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/PokemonImage"
         app:rowCount="2">
 
         <RadioButton
@@ -105,6 +107,8 @@
             android:id="@+id/rb_pokemon_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
             android:onClick="radioButtonOnClick"
             android:text="Pidgeotto" />
 
@@ -116,5 +120,18 @@
             android:text="Clefairy" />
 
     </GridLayout>
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:onClick="nextButtonClick"
+        android:text="Next"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ShowScoreText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
