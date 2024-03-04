@@ -1,5 +1,6 @@
 package com.example.bignumber
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,10 +14,10 @@ import java.util.Random
 data class WordDefinition(var word: String, val definition: String);
 
 class MainActivity : AppCompatActivity() {
-
-    private var leftNum :Int = 0;
-    private var rightNum :Int = 0;
+    private val ADD_WORD_CODE: Int = 1234; //1-65535
     private var score :Int = 0;
+    private var totalCorrect :Int = 0;
+    private var totalWrong :Int = 0;
     private lateinit var myAdapter : ArrayAdapter<String>;
     private var data_def_list = ArrayList<String>();
     private var wordDefinitions = mutableListOf<WordDefinition>();
@@ -43,16 +44,48 @@ class MainActivity : AppCompatActivity() {
             if(correctDef == data_def_list[index])
             {
                 score++;
+                totalCorrect++;
             }
             else
             {
                 score--;
+                totalWrong++;
             }
             findViewById<TextView>(R.id.scoreText).text = "Score: $score";
             data_def_list.removeAt(index);
             myAdapter.notifyDataSetChanged();
             refreshWordAndDefinition();
         };
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == ADD_WORD_CODE)
+        {
+            if(data != null)
+            {
+                val word = data.getStringExtra("word")?:""
+                val def = data.getStringExtra("def")?:""
+
+                wordDefinitions.add(WordDefinition(word, def));
+                myAdapter.notifyDataSetChanged();
+                refreshWordAndDefinition();
+            }
+        }
+    }
+
+    fun statsOnClick(view: View)
+    {
+        val myIntent = Intent(this, StatsActivity::class.java);
+        myIntent.putExtra("score", score.toString());
+        myIntent.putExtra("totalCorrect", totalCorrect.toString());
+        myIntent.putExtra("totalWrong", totalWrong.toString());
+        startActivity(myIntent);
+    }
+    fun addWordOnClick(view: View)
+    {
+        val myIntent = Intent(this, AddWordActivity::class.java);
+        startActivityForResult(myIntent, ADD_WORD_CODE);
     }
 
     fun setUpList()

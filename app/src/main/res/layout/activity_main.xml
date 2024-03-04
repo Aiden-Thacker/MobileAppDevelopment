@@ -5,6 +5,7 @@
     android:id="@+id/HelloText"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="statsOnClick"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -59,7 +60,6 @@
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="Score"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,11 +70,27 @@
         android:id="@+id/add_word_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="addWordOnClick"
         android:text="Add Word"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_button" />
+
+    <Button
+        android:id="@+id/stats_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:onClick="statsOnClick"
+        android:text="Stats"
+        app:layout_constraintBottom_toTopOf="@+id/add_word_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText" />
 
