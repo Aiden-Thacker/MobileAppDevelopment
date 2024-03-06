@@ -3,6 +3,7 @@ package com.example.bignumber
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -10,6 +11,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Random
+import java.util.Scanner
 
 data class WordDefinition(var word: String, val definition: String);
 
@@ -26,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Log.d("Activity Watch", "onCreate")
+
         loadDefinition();
         setUpList();
+
 
 
         val def_list = findViewById<ListView>(R.id.dynamic_def_list);
@@ -58,6 +63,27 @@ class MainActivity : AppCompatActivity() {
         };
     }
 
+    override fun onStart()
+    {
+        super.onStart();
+
+        Log.d("Activity Watch", "onStart");
+    }
+
+    override fun onResume()
+    {
+        super.onResume();
+
+        Log.d("Activity Watch", "onResume");
+    }
+
+    override fun onDestroy()
+    {
+        super.onDestroy()
+
+        Log.d("Activity Watch", "onDestroy")
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == ADD_WORD_CODE)
@@ -72,6 +98,22 @@ class MainActivity : AppCompatActivity() {
                 refreshWordAndDefinition();
             }
         }
+    }
+
+    private fun loadPlayerData()
+    {
+        val reader = Scanner(resources.openRawResource(R.raw.game_data));
+        while(reader.hasNextLine())
+        {
+            val line = reader.nextLine();
+            val wd = line.split("|");
+            wordDefinitions.add(WordDefinition(wd[0],wd[1]));
+        }
+    }
+
+    private fun savePlayerData()
+    {
+
     }
 
     fun statsOnClick(view: View)
@@ -100,10 +142,13 @@ class MainActivity : AppCompatActivity() {
 
     fun loadDefinition()
     {
+        loadPlayerData();
+        /*
         wordDefinitions.add(WordDefinition("simple","easy to understand"));
         wordDefinitions.add(WordDefinition("kotlin","programming language"));
         wordDefinitions.add(WordDefinition("ui","user interface"));
         wordDefinitions.add(WordDefinition("ux","user experience"));
+        */
     }
 
     fun refreshWordAndDefinition()

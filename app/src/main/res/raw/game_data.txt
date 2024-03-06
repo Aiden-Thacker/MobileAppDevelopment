@@ -1,0 +1,4 @@
+simple|easy to understand
+kotlin|programming language
+ui|user interface
+ux|user experience
