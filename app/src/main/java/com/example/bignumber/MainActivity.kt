@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.io.File
+import java.io.FileInputStream
 import java.util.Random
 import java.util.Scanner
 
@@ -96,6 +98,13 @@ class MainActivity : AppCompatActivity() {
                 wordDefinitions.add(WordDefinition(word, def));
                 myAdapter.notifyDataSetChanged();
                 refreshWordAndDefinition();
+
+                val file = File(applicationContext.filesDir, "user_words");
+                if(!file.exists())
+                {
+                    file.createNewFile();
+                }
+                file.appendText("$word|$def\n");
             }
         }
     }
@@ -109,6 +118,21 @@ class MainActivity : AppCompatActivity() {
             val wd = line.split("|");
             wordDefinitions.add(WordDefinition(wd[0],wd[1]));
         }
+
+        val file = File(applicationContext.filesDir, "user_words");
+        if(file.exists())
+        {
+            val readResult = FileInputStream(file);
+            val userReader = Scanner(readResult);
+
+            while(userReader.hasNextLine())
+            {
+                val line = userReader.nextLine();
+                val wd = line.split("|");
+                wordDefinitions.add(WordDefinition(wd[0],wd[1]));
+            }
+        }
+
     }
 
     private fun savePlayerData()
